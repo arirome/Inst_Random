@@ -35,7 +35,7 @@ router.post('/registro',
 
 
     validarUser,
-    validarCampos,
+  
 
     rutaPost)
 

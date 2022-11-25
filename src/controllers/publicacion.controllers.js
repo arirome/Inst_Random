@@ -1,11 +1,14 @@
 const ctrlPublicacion = {};
+const { query } = require('express');
 const Publicacion = require('../models/Publicaciones');
 
 
 //mostrar publicacioness
 ctrlPublicacion.rutaGetPublicacion = async (req, res) => {
 
-    const publicaciones = await Publicacion.find();
+    const publicaciones = await Publicacion.find().populate('user', "nombre")
+    //res.send(publicaciones)
+    
     res.json(publicaciones);
 };
 
@@ -49,6 +52,10 @@ ctrlPublicacion.rutaPutPublicacion = async (req, res) => {
     } = req.body;
 
     try {
+
+        /* const removeIndex = publicaciones
+            .map(publicacion => publicacion.user.toString() === req.user.id) */
+
 
         const publicaciones = await Publicacion.findByIdAndUpdate(id, resto, {
             new: true

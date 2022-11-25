@@ -28,27 +28,37 @@ const UserSchema = new Schema({
     dni: {
         type: String,
         required: true,
-        unique: true
+       
     },
     telefono: [{ type: String, required: true }],
 
-    email: {type: String, required: true, unique: true},
+    email: {type: String, required: true, },
 
 
 
     userType: { type: String, },
 
+ tituloSecundario: {
+        type: String,
+        //required: true,
+    },
 
-        dataAlumno: {
+    materiasEncargadas: [{
+        type: Schema.Types.ObjectId,
+        ref: "materia"
+    }],
+
+
+     /*    dataAlumno: {
 
     tituloSecundario: {
         type: String,
         //required: true,
     },
 
-        },
+        }, */
 
-        dataProfesor: {
+    /*     dataProfesor: {
 
         titulos: [{type: String}],
 
@@ -58,6 +68,14 @@ const UserSchema = new Schema({
         }],
 
     },
+
+    dataProfesor: {
+        
+        type: String, 
+        required: true,
+        
+    
+    }, */
 
     activo: {type: Boolean, default: true}
 
@@ -74,4 +92,4 @@ UserSchema.methods.toJSON = function () {
     return usuario;
 }
 
-module.exports = model('user', UserSchema);
+module.exports = model('User', UserSchema);

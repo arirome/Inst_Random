@@ -24,12 +24,14 @@ ctrlAuthUser.rutaLogin = async (req, res) => {
 
     // Busqueda del usuario segun las credenciales recibidas
     const usuarioAuth = await User.findOne({
-        email
+        email,
+        contrasenia
     });
 
 
     if (!usuarioAuth) {
         return res.status(401).json({
+            ok:true,
             msg: 'el usuario no existe'
         })
     }
@@ -61,6 +63,7 @@ ctrlAuthUser.revalidarToken = async (req, res) => {
     const token = await generate_jwt(_id);
 
 
+    
     res.json({
         ok: true,
         msg: 'Token revalidado',

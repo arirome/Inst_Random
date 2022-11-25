@@ -45,21 +45,53 @@ ctrlUser.rutaPut = async (req, res) => {
     const {
         id
     } = req.params;
+    
     const {
         _id,
         ...resto
     } = req.body;
 
+
+    
+
     try {
+
+        
 
         const usuario = await User.findByIdAndUpdate(id, resto, {
             new: true
         });
 
+        console.log(usuario._id.toString())
+
+        console.log(req.usuario._id)
+
+        if(usuario._id.toString() !== req.usuario._id.toString()) {
+
+            return res.json({
+                msg: 'queres actualizar la tarea de otro usuario',
+                
+            });
+
+            
+        }
+
+
+        
         res.json({
             msg: 'Datos del usuario actualizados exitosamente',
             usuario
         });
+
+
+       
+
+        /* const removeIndex = usuario
+        .map(usuarios => usuarios.usuario.toString() === req.usuario.id) */
+
+       
+
+
 
     } catch (error) {
         console.log('Error al actualizar los datos del usuario: ', error);

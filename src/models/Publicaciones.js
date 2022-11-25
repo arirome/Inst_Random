@@ -1,11 +1,13 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+
+
 const PublicacionesSchema = new Schema({
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'user'
-    },
+    
+    user:{type:Schema.Types.ObjectId, ref: 'User'},
+
+    
 
     texto: {
         type: String,
@@ -20,9 +22,9 @@ const PublicacionesSchema = new Schema({
 
 
     commentarios: [{
-        user: {
+        userId: {
             type: Schema.Types.ObjectId,
-            ref: 'user'
+            ref: 'User'
         },
         texto: {
             type: String,

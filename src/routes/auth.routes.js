@@ -34,7 +34,7 @@ routerLogin.get('/get-auth', rutaGet)
 
 //ruta TOKEN
 
-routerLogin.get('/get-userID', [validar_jwt], revalidarToken)
+routerLogin.get('/relavalidar/token', [validar_jwt], revalidarToken)
 
 //loguearse
 routerLogin.post('/auth/login',

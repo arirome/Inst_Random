@@ -4,7 +4,7 @@ const User = require('../models/User');
 
 const validar_jwt = async (req, res, next) => {
 
-    const token = req.header('token');
+    const token = req.header('x-token');
 
     console.log(token)
     //verifica si el token esta en el header para aprobar el ingreso

@@ -24,7 +24,7 @@ const MateriaSchema = new Schema({
 
     },
 
-    inasistenciaAlumnos: {
+/*     inasistenciaAlumnos: {
         fecha: {
             type: Date,
         default: Date.now()
@@ -35,7 +35,7 @@ const MateriaSchema = new Schema({
             ref: "user"
         }]
     },
-
+ */
     profesorEncargado: {
         type: Schema.Types.ObjectId,
         ref: "user"
